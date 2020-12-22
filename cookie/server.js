@@ -8,10 +8,13 @@ http.createServer(function(req,res){
 
   if(req.url === '/') {
     const html = fs.readFileSync('test.html', 'utf8') 
-    res.writeHead(200, {
-      'Content-Type': 'text/html',
-      'Set-Cookie': ['id=123; max-age=2','abc=456; HttpOnly']
-    })
+    if (host === 'a.test.com'){
+      res.writeHead(200, {
+        'Content-Type': 'text/html',
+        'Set-Cookie': ['id=123; max-age=2','abc=456; HttpOnly']
+      }) 
+    }
+    
     res.end(html)
   }
 
