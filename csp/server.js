@@ -6,7 +6,8 @@ http.createServer(function(request, response) {
 
   const html = fs.readFileSync('test.html', 'utf8')
   response.writeHead(200, {
-    'Content-Type': 'text/html'
+    'Content-Type': 'text/html',
+    'Content-Security-Policy': 'default-src \'self\''
   })
   response.end(html)
 }).listen(8888)
