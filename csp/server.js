@@ -8,7 +8,9 @@ http.createServer(function(request, response) {
     const html = fs.readFileSync('test.html', 'utf8')
     response.writeHead(200, {
       'Content-Type': 'text/html',
-      'Content-Security-Policy': ' default-src \'self\'; form-action \'self\''
+      // \'self\'表示只能加载本站名下面的脚本
+      // 'https://cdn.bootcdn.net' 允许域名下的脚本加载
+      'Content-Security-Policy': ' default-src \'self\'; form-action \'self\'; report-uri /report'
     })
     response.end(html)
   } else { //引入外链接的js则会打印load script
