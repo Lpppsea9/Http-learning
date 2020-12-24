@@ -8,10 +8,10 @@ http.createServer(function(request, response) {
     const html = fs.readFileSync('test.html', 'utf8')
     response.writeHead(200, {
       'Content-Type': 'text/html',
-      'Content-Security-Policy': ' default-src http: https:; form-action \'self\''
+      'Content-Security-Policy': ' default-src \'self\'; form-action \'self\''
     })
     response.end(html)
-  } else {
+  } else { //引入外链接的js则会打印load script
     response.writeHead(200, {
       'Content-Type': 'application/javascript'
     })
