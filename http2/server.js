@@ -23,3 +23,5 @@ http.createServer((request,response) => {
     response.end(img)
   }
 })
+
+console.log("listing");
